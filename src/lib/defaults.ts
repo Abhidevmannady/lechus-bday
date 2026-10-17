@@ -2,7 +2,7 @@ import { EternityData } from "@/types/eternity";
 
 export const defaultEternityData: EternityData = {
   config: {
-    recipient_name: "[Recipient Name]",
+    recipient_name: "LECHU",
     birthday_date: "Celebrate Today",
     tagline: "Every beautiful story has a person who makes it unforgettable.",
     intro_quote: "For someone who makes ordinary moments extraordinary.",
@@ -166,7 +166,7 @@ export const defaultEternityData: EternityData = {
     heading: "One Thing I Never Want You to Forget",
     seal_text: "For Your Eyes Only",
     instruction_text: "There's something I'd like you to read.",
-    greeting: "Dear [Recipient Name],",
+    greeting: "Dearest Lechu,",
     paragraphs: [
       "In a world that is always rushing from one thing to the next, taking a moment to stop and celebrate who you are is something I have been looking forward to.",
       "You have this quiet, effortless superpower of making the people around you feel heard, appreciated, and at ease. Whether it is your genuine laughter, your thoughtful advice, or simply your presence on an ordinary Tuesday, you bring something truly special into this world.",
@@ -180,7 +180,7 @@ export const defaultEternityData: EternityData = {
   },
   surprise: {
     wish_prompt: "Make a wish. This moment is yours.",
-    cake_title: "A Wish For Your New Year",
+    cake_title: "A Wish For Lechu",
     revealed_message: "May every wish you whisper into the universe today come back to you as joy, health, peace, and unforgettable adventures.",
     secret_title: "A Hidden Surprise Just For You",
     secret_note: "P.S. — You can edit this secret message, add a private photo, or link a special video inside the Admin panel! This little corner is meant for your most personal inside joke or heartfelt surprise.",

@@ -65,7 +65,7 @@ export default function FinalScene({
             With All Warmth & Sincerity
           </p>
           <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#F5F0E8] gold-gradient-text font-normal">
-            HAPPY BIRTHDAY, {recipientName || "[RECIPIENT NAME]"}.
+            HAPPY BIRTHDAY, {recipientName || "LECHU"}.
           </h2>
         </motion.div>
 

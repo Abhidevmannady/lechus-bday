@@ -169,7 +169,7 @@ export default function CinematicOpening({
           </p>
 
           <h2 className="font-serif text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-light text-[#F5F0E8] leading-none mb-6 gold-pure-gradient drop-shadow-2xl">
-            {recipientName || "[Recipient Name]"}
+            {recipientName || "LECHU"}
           </h2>
 
           <p className="font-serif italic text-base sm:text-xl text-[#F5F0E8]/90 max-w-md font-light mb-8">

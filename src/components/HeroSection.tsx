@@ -63,7 +63,7 @@ export default function HeroSection({
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#151519] border border-[#D6B779]/25 text-[11px] text-[#E8CF9A] tracking-wider mb-8 font-mono">
             <Sparkles className="w-3.5 h-3.5 text-[#D6B779]" />
-            <span>HONORING {recipientName || "[Recipient Name]"}</span>
+            <span>HONORING {recipientName || "LECHU"}</span>
           </div>
 
           <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-light leading-[1.02] text-[#F5F0E8] tracking-tight mb-8">
@@ -122,7 +122,7 @@ export default function HeroSection({
                       PORTRAIT N° 01
                     </p>
                     <p className="font-serif text-sm text-[#F5F0E8] truncate">
-                      {recipientName || "[Recipient Name]"}
+                      {recipientName || "LECHU"}
                     </p>
                   </div>
                   <span className="text-[10px] text-[#A3A3A8] tracking-widest font-mono">

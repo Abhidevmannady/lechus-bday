@@ -9,7 +9,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- 1. Site Configuration Table
 CREATE TABLE IF NOT EXISTS public.site_config (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    recipient_name TEXT NOT NULL DEFAULT '[Recipient Name]',
+    recipient_name TEXT NOT NULL DEFAULT 'LECHU',
     birthday_date TEXT NOT NULL DEFAULT 'Celebrate Today',
     tagline TEXT NOT NULL DEFAULT 'Every beautiful story has a person who makes it unforgettable.',
     intro_quote TEXT NOT NULL DEFAULT 'For someone who makes ordinary moments extraordinary.',
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS public.letter_content (
     heading TEXT NOT NULL DEFAULT 'One Thing I Never Want You to Forget',
     seal_text TEXT NOT NULL DEFAULT 'For Your Eyes Only',
     instruction_text TEXT NOT NULL DEFAULT 'There''s something I''d like you to read.',
-    greeting TEXT NOT NULL DEFAULT 'Dear [Recipient Name],',
+    greeting TEXT NOT NULL DEFAULT 'Dearest Lechu,',
     paragraphs TEXT[] NOT NULL DEFAULT '{}',
     closing TEXT NOT NULL DEFAULT 'With warmth and gratitude,',
     signature TEXT NOT NULL DEFAULT 'Always, Someone Who Appreciates You',

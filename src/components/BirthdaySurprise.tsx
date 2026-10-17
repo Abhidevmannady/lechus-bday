@@ -133,7 +133,7 @@ export default function BirthdaySurprise({ surprise, recipientName }: BirthdaySu
             <div className="absolute top-0 inset-x-0 h-3 bg-gradient-to-r from-[#D6B779]/30 via-[#E8CF9A]/60 to-[#D6B779]/30 border-b border-[#D6B779]/40" />
             <div className="flex items-center gap-1.5 text-xs text-[#D6B779] font-serif tracking-widest uppercase">
               <Sparkles className="w-3 h-3 text-[#D6B779]" />
-              <span>{recipientName || "Eternity"}</span>
+              <span>{recipientName || "LECHU"}</span>
               <Sparkles className="w-3 h-3 text-[#D6B779]" />
             </div>
           </div>
