@@ -16,7 +16,7 @@ export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl!, supabaseAnonKey!)
   : null;
 
-const LOCAL_STORAGE_KEY = "eternity_vault_data_v2";
+const LOCAL_STORAGE_KEY = "eternity_vault_data_v3";
 
 // Helper to get local data safely
 export function getLocalData(): EternityData {
@@ -32,8 +32,13 @@ export function getLocalData(): EternityData {
           ? parsed.config.recipient_name
           : "LECHU";
 
+      const heroImageUrl =
+        parsed.config?.hero_image_url && !parsed.config.hero_image_url.includes("unsplash")
+          ? parsed.config.hero_image_url
+          : "/images/lechu-hero.jpg";
+
       return {
-        config: { ...defaultEternityData.config, ...(parsed.config || {}), recipient_name: recipientName },
+        config: { ...defaultEternityData.config, ...(parsed.config || {}), recipient_name: recipientName, hero_image_url: heroImageUrl },
         gallery: parsed.gallery?.length ? parsed.gallery : defaultEternityData.gallery,
         videos: parsed.videos?.length ? parsed.videos : defaultEternityData.videos,
         timeline: parsed.timeline?.length ? parsed.timeline : defaultEternityData.timeline,

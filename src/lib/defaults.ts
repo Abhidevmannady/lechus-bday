@@ -9,7 +9,7 @@ export const defaultEternityData: EternityData = {
     intro_title: "A Story Called You",
     hero_headline: "Today, the world gets to celebrate you.",
     hero_subheadline: "Your smile, your little quirks, your unforgettable moments, and all the memories that make you who you are.",
-    hero_image_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80",
+    hero_image_url: "/images/lechu-hero.jpg",
     music_url: "", // Can be filled by admin or synthesized ambient
     music_title: "Cinematic Atmosphere — Celestial Peace",
     final_quote: "If there's one thing I hope you carry with you, it's this: you make the world a little more beautiful simply by being in it.",
@@ -24,11 +24,11 @@ export const defaultEternityData: EternityData = {
   gallery: [
     {
       id: "img-1",
-      url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=80",
-      caption: "A quiet moment in the afternoon light.",
-      date: "Spring Memory",
-      location: "Golden Hour Avenue",
-      personal_note: "One of those afternoons where time stood completely still.",
+      url: "/images/lechu-hero.jpg",
+      caption: "That spontaneous smile that lights up any room.",
+      date: "Special Memory",
+      location: "Golden Moments",
+      personal_note: "Pure, radiant happiness. A smile that makes ordinary days feel extraordinary.",
       aspect_ratio: "portrait",
       is_featured: true,
       sort_order: 1,
@@ -176,7 +176,7 @@ export const defaultEternityData: EternityData = {
     closing: "With warmth and gratitude,",
     signature: "Always, Someone Who Appreciates You",
     date: "On this special day",
-    photo_url: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=400&q=80",
+    photo_url: "/images/lechu-hero.jpg",
   },
   surprise: {
     wish_prompt: "Make a wish. This moment is yours.",
@@ -184,7 +184,7 @@ export const defaultEternityData: EternityData = {
     revealed_message: "May every wish you whisper into the universe today come back to you as joy, health, peace, and unforgettable adventures.",
     secret_title: "A Hidden Surprise Just For You",
     secret_note: "P.S. — You can edit this secret message, add a private photo, or link a special video inside the Admin panel! This little corner is meant for your most personal inside joke or heartfelt surprise.",
-    secret_photo_url: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80",
+    secret_photo_url: "/images/lechu-hero.jpg",
     secret_wish: "May all your dreams take flight this year.",
   },
   quirks: [
