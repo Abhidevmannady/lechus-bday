@@ -35,13 +35,13 @@ export const defaultEternityData: EternityData = {
     },
     {
       id: "img-2",
-      url: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80",
-      caption: "That spontaneous smile that lights up any room.",
-      date: "Summer Days",
-      location: "By the Coast",
-      personal_note: "Pure, unfiltered joy. This will always be a favorite.",
+      url: "/images/lechu-friends.jpg",
+      caption: "Classroom chaos, endless laughter, and the friends who make every day brighter.",
+      date: "Campus Days",
+      location: "With The Gang",
+      personal_note: "The memories we will talk and laugh about for years to come.",
       aspect_ratio: "landscape",
-      is_featured: false,
+      is_featured: true,
       sort_order: 2,
     },
     {
@@ -114,14 +114,14 @@ export const defaultEternityData: EternityData = {
   timeline: [
     {
       id: "time-1",
-      title: "The Very First Chapter",
-      date: "Day One",
-      story: "It started with a simple hello and an effortless conversation that made hours feel like minutes. Nobody could have predicted how meaningful this bond would become.",
+      title: "The Gang & Unforgettable Days",
+      date: "Campus Days",
+      story: "Through every class, every inside joke, and all the spontaneous laughs that echoed through the room. Having this gang around made every single day brighter.",
       image_urls: [
-        "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
+        "/images/lechu-friends.jpg"
       ],
-      location: "Where it all began",
-      personal_note: "Some people step into your world and instantly make it feel warmer.",
+      location: "With The Gang",
+      personal_note: "Friendship isn't just a memory, it's the anchor of every great story.",
       sort_order: 1,
     },
     {

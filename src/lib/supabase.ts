@@ -16,7 +16,7 @@ export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl!, supabaseAnonKey!)
   : null;
 
-const LOCAL_STORAGE_KEY = "eternity_vault_data_v3";
+const LOCAL_STORAGE_KEY = "eternity_vault_data_v4";
 
 // Helper to get local data safely
 export function getLocalData(): EternityData {
