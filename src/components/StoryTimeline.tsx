@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TimelineEntry } from "@/types/eternity";
 import { Compass, MapPin, Calendar, Quote, X, ChevronRight } from "lucide-react";
+import Card3D from "@/components/Card3D";
 
 interface StoryTimelineProps {
   entries: TimelineEntry[];
@@ -124,22 +125,29 @@ export default function StoryTimeline({ entries }: StoryTimelineProps) {
                       }`}
                     >
                       {entry.image_urls.map((imgUrl, imgIdx) => (
-                        <div
+                        <Card3D
                           key={imgIdx}
-                          onClick={() => setSelectedImage(imgUrl)}
-                          className="group relative rounded-2xl overflow-hidden bg-[#151519] border border-[#D6B779]/20 hover:border-[#D6B779]/60 transition-all duration-500 shadow-xl cursor-pointer aspect-[4/3]"
+                          maxTilt={8}
+                          scale={1.02}
+                          glareOpacity={0.18}
+                          className="rounded-2xl overflow-hidden cursor-pointer aspect-[4/3]"
                         >
-                          <img
-                            src={imgUrl}
-                            alt={`${entry.title} moment`}
-                            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-[#0B0B0D]/30 group-hover:bg-transparent transition-colors duration-300" />
-                          <div className="absolute bottom-3 right-3 p-1.5 rounded-full bg-[#0B0B0D]/80 text-[#D6B779] opacity-0 group-hover:opacity-100 transition-opacity">
-                            <ChevronRight className="w-3.5 h-3.5" />
+                          <div
+                            onClick={() => setSelectedImage(imgUrl)}
+                            className="group relative w-full h-full overflow-hidden bg-[#151519] border border-[#D6B779]/20 hover:border-[#D6B779]/60 transition-all duration-500 shadow-xl"
+                          >
+                            <img
+                              src={imgUrl}
+                              alt={`${entry.title} moment`}
+                              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-[#0B0B0D]/30 group-hover:bg-transparent transition-colors duration-300" />
+                            <div className="absolute bottom-3 right-3 p-1.5 rounded-full bg-[#0B0B0D]/80 text-[#D6B779] opacity-0 group-hover:opacity-100 transition-opacity">
+                              <ChevronRight className="w-3.5 h-3.5" />
+                            </div>
                           </div>
-                        </div>
+                        </Card3D>
                       ))}
                     </div>
                   ) : (

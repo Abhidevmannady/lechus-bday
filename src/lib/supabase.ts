@@ -16,7 +16,7 @@ export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl!, supabaseAnonKey!)
   : null;
 
-const LOCAL_STORAGE_KEY = "eternity_vault_data_v4";
+const LOCAL_STORAGE_KEY = "eternity_vault_data_v5";
 
 // Helper to get local data safely
 export function getLocalData(): EternityData {
@@ -37,13 +37,47 @@ export function getLocalData(): EternityData {
           ? parsed.config.hero_image_url
           : "/images/lechu-hero.jpg";
 
+      // Purge any unwanted placeholder unsplash images or sample videos from old caches
+      const cleanGallery = (parsed.gallery || [])
+        .filter((item: GalleryImage) => item.url && !item.url.includes("unsplash.com"));
+
+      const cleanVideos = (parsed.videos || [])
+        .filter((v: VideoMemory) => v.url && !v.url.includes("commondatastorage.googleapis.com") && (!v.poster_url || !v.poster_url.includes("unsplash.com")));
+
+      const cleanTimeline = (parsed.timeline || []).map((t: TimelineEntry) => ({
+        ...t,
+        image_urls: (t.image_urls || []).filter((u: string) => !u.includes("unsplash.com")),
+      })).filter((t: TimelineEntry) => t.image_urls.length > 0 || t.id.startsWith("time-"));
+
+      const cleanLetter = {
+        ...defaultEternityData.letter,
+        ...(parsed.letter || {}),
+        photo_url: parsed.letter?.photo_url && !parsed.letter.photo_url.includes("unsplash.com")
+          ? parsed.letter.photo_url
+          : "/images/lechu-hero.jpg",
+      };
+
+      const cleanSurprise = {
+        ...defaultEternityData.surprise,
+        ...(parsed.surprise || {}),
+        secret_photo_url: parsed.surprise?.secret_photo_url && !parsed.surprise.secret_photo_url.includes("unsplash.com")
+          ? parsed.surprise.secret_photo_url
+          : "/images/lechu-friends.jpg",
+      };
+
       return {
-        config: { ...defaultEternityData.config, ...(parsed.config || {}), recipient_name: recipientName, hero_image_url: heroImageUrl },
-        gallery: parsed.gallery?.length ? parsed.gallery : defaultEternityData.gallery,
-        videos: parsed.videos?.length ? parsed.videos : defaultEternityData.videos,
-        timeline: parsed.timeline?.length ? parsed.timeline : defaultEternityData.timeline,
-        letter: { ...defaultEternityData.letter, ...(parsed.letter || {}) },
-        surprise: { ...defaultEternityData.surprise, ...(parsed.surprise || {}) },
+        config: {
+          ...defaultEternityData.config,
+          ...(parsed.config || {}),
+          recipient_name: recipientName,
+          hero_image_url: heroImageUrl,
+          show_videos: cleanVideos.length > 0,
+        },
+        gallery: cleanGallery.length ? cleanGallery : defaultEternityData.gallery,
+        videos: cleanVideos,
+        timeline: cleanTimeline.length ? cleanTimeline : defaultEternityData.timeline,
+        letter: cleanLetter,
+        surprise: cleanSurprise,
         quirks: parsed.quirks?.length ? parsed.quirks : defaultEternityData.quirks,
       };
     }

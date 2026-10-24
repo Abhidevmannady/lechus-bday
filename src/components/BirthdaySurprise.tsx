@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import { SurpriseContent } from "@/types/eternity";
 import { Sparkles, Wind, Gift, Heart, RotateCcw, Lock, Unlock } from "lucide-react";
+import ThreeBirthdayCake from "@/components/ThreeBirthdayCake";
 
 interface BirthdaySurpriseProps {
   surprise: SurpriseContent;
@@ -91,68 +92,14 @@ export default function BirthdaySurprise({ surprise, recipientName }: BirthdaySu
         </motion.p>
       </div>
 
-      {/* Interactive Birthday Cake Ritual */}
+      {/* Interactive 3D Birthday Cake Ritual */}
       <div className="relative max-w-lg mx-auto flex flex-col items-center">
-        {/* The Patisserie Artwork Cake */}
-        <div className="relative w-80 h-72 flex flex-col items-center justify-end select-none">
-          {/* Candle Flames & Smoke Layer */}
-          <div className="flex items-end justify-center gap-8 mb-1 relative z-20">
-            {[1, 2, 3].map((candleIndex) => (
-              <div key={candleIndex} className="flex flex-col items-center relative">
-                {/* Flame with multi-tier glow */}
-                {!candlesBlown ? (
-                  <div
-                    className={`relative w-4 h-7 cursor-pointer transition-transform duration-300 ${
-                      isBlowing ? "skew-x-12 scale-90 opacity-60" : "animate-flicker"
-                    }`}
-                  >
-                    {/* Outer amber halo */}
-                    <div className="absolute inset-0 rounded-full bg-[#FFB703] blur-[3px] opacity-80" />
-                    {/* Inner gold flame */}
-                    <div className="absolute inset-0.5 rounded-full bg-gradient-to-t from-[#D6B779] via-[#FFD700] to-white" />
-                    {/* White-hot core */}
-                    <div className="absolute inset-x-1 bottom-1 top-3 rounded-full bg-white opacity-95" />
-                  </div>
-                ) : (
-                  /* Curling SVG Smoke Wisp */
-                  <div className="w-2 h-7 bg-white/30 rounded-full animate-smoke pointer-events-none" />
-                )}
-
-                {/* Wick */}
-                <div className="w-0.5 h-2 bg-[#8F7846]" />
-
-                {/* Fluted Gold Candle Body */}
-                <div className="w-3.5 h-14 rounded-t-sm bg-gradient-to-b from-[#F5F0E8] via-[#D6B779] to-[#8F7846] shadow-md border border-[#D6B779]/50" />
-              </div>
-            ))}
-          </div>
-
-          {/* Cake Tier 1 (Top Tier) */}
-          <div className="relative w-48 h-18 rounded-t-2xl bg-gradient-to-b from-[#21212B] to-[#15151A] border-t-2 border-x border-[#D6B779]/60 shadow-xl flex items-center justify-center overflow-hidden z-10">
-            {/* Scallop Frosting Filigree */}
-            <div className="absolute top-0 inset-x-0 h-3 bg-gradient-to-r from-[#D6B779]/30 via-[#E8CF9A]/60 to-[#D6B779]/30 border-b border-[#D6B779]/40" />
-            <div className="flex items-center gap-1.5 text-xs text-[#D6B779] font-serif tracking-widest uppercase">
-              <Sparkles className="w-3 h-3 text-[#D6B779]" />
-              <span>{recipientName || "LECHU"}</span>
-              <Sparkles className="w-3 h-3 text-[#D6B779]" />
-            </div>
-          </div>
-
-          {/* Cake Tier 2 (Middle Tier) */}
-          <div className="relative w-64 h-20 rounded-t-2xl bg-gradient-to-b from-[#1C1C24] to-[#121216] border-t-2 border-x border-[#D6B779]/50 shadow-2xl flex items-center justify-between px-6 overflow-hidden">
-            <div className="absolute top-0 inset-x-0 h-3 bg-gradient-to-r from-[#D6B779]/40 via-[#E8CF9A]/70 to-[#D6B779]/40 border-b border-[#D6B779]/50" />
-            <span className="text-[10px] uppercase tracking-widest text-[#D6B779]/70 font-mono">
-              NEW CHAPTER
-            </span>
-            <Heart className="w-3.5 h-3.5 text-[#B98E96]" />
-            <span className="text-[10px] uppercase tracking-widest text-[#D6B779]/70 font-mono">
-              EST. 2026
-            </span>
-          </div>
-
-          {/* Cake Tier 3 (Pedestal / Base) */}
-          <div className="w-76 h-5 rounded-full bg-gradient-to-r from-[#7D6433] via-[#D6B779] to-[#7D6433] shadow-2xl border-t border-[#F5F0E8]/50" />
-        </div>
+        {/* 3D WebGL Birthday Cake with real lighting and blow physics */}
+        <ThreeBirthdayCake
+          isBlown={candlesBlown}
+          isBlowing={isBlowing}
+          recipientName={recipientName}
+        />
 
         {/* Blow Action Controls */}
         <div className="mt-10 flex items-center gap-4">

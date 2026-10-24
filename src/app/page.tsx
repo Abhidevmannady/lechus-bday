@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import ThreeCanvasBackground from "@/components/ThreeCanvasBackground";
 import ParticleBackground from "@/components/ParticleBackground";
 import AmbientSoundtrack from "@/components/AmbientSoundtrack";
 import CinematicOpening from "@/components/CinematicOpening";
@@ -34,6 +35,9 @@ export default function EternityHome() {
     <main className="relative min-h-screen bg-[#0B0B0D] text-[#EDEDED] selection:bg-[#D6B779]/30 selection:text-[#F5F0E8] overflow-x-hidden">
       {/* Subtle Film Grain Overlay */}
       <div className="film-grain" />
+
+      {/* 3D WebGL Canvas Background: Celestial Rings, 3D Crystals & Interactive Starfield */}
+      <ThreeCanvasBackground />
 
       {/* Floating Stardust Particles */}
       <ParticleBackground />

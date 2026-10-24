@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Calendar, Sparkles } from "lucide-react";
+import Card3D from "@/components/Card3D";
 
 interface HeroSectionProps {
   recipientName: string;
@@ -88,7 +89,7 @@ export default function HeroSection({
           </button>
         </motion.div>
 
-        {/* Right Column: Leica Medium-Format Photography Frame */}
+        {/* Right Column: Leica Medium-Format Photography Frame with 3D Parallax Tilt */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -96,42 +97,44 @@ export default function HeroSection({
           transition={{ duration: 1.4, delay: 0.3 }}
           className="lg:col-span-5 relative"
         >
-          <div className="relative mx-auto max-w-md lg:max-w-none group">
-            {/* Viewfinder corner brackets */}
-            <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-[#D6B779]/50 pointer-events-none" />
-            <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-[#D6B779]/50 pointer-events-none" />
-            <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-[#D6B779]/50 pointer-events-none" />
-            <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-[#D6B779]/50 pointer-events-none" />
+          <Card3D maxTilt={10} scale={1.02} glareOpacity={0.25} className="mx-auto max-w-md lg:max-w-none">
+            <div className="relative group">
+              {/* Viewfinder corner brackets */}
+              <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-[#D6B779]/50 pointer-events-none" />
+              <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-[#D6B779]/50 pointer-events-none" />
+              <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-[#D6B779]/50 pointer-events-none" />
+              <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-[#D6B779]/50 pointer-events-none" />
 
-            {/* Frame border */}
-            <div className="relative rounded-2xl p-2.5 bg-[#151519] border border-[#D6B779]/30 shadow-2xl overflow-hidden">
-              <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-[#0B0B0D]">
-                <img
-                  src={heroImageUrl}
-                  alt={recipientName ? `${recipientName}'s portrait` : "Celebrated memory"}
-                  className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                />
+              {/* Frame border */}
+              <div className="relative rounded-2xl p-2.5 bg-[#151519] border border-[#D6B779]/30 shadow-2xl overflow-hidden">
+                <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-[#0B0B0D]">
+                  <img
+                    src={heroImageUrl}
+                    alt={recipientName ? `${recipientName}'s portrait` : "Celebrated memory"}
+                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  />
 
-                {/* Film vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D]/85 via-transparent to-transparent pointer-events-none" />
+                  {/* Film vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D]/85 via-transparent to-transparent pointer-events-none" />
 
-                {/* Museum placard label */}
-                <div className="absolute bottom-4 inset-x-4 flex items-center justify-between p-3.5 rounded-lg bg-[#0B0B0D]/80 backdrop-blur-md border border-[#D6B779]/20">
-                  <div>
-                    <p className="text-[9px] uppercase tracking-[0.25em] text-[#D6B779] font-mono">
-                      PORTRAIT N° 01
-                    </p>
-                    <p className="font-serif text-sm text-[#F5F0E8] truncate">
-                      {recipientName || "LECHU"}
-                    </p>
+                  {/* Museum placard label */}
+                  <div className="absolute bottom-4 inset-x-4 flex items-center justify-between p-3.5 rounded-lg bg-[#0B0B0D]/80 backdrop-blur-md border border-[#D6B779]/20">
+                    <div>
+                      <p className="text-[9px] uppercase tracking-[0.25em] text-[#D6B779] font-mono">
+                        PORTRAIT N° 01
+                      </p>
+                      <p className="font-serif text-sm text-[#F5F0E8] truncate">
+                        {recipientName || "LECHU"}
+                      </p>
+                    </div>
+                    <span className="text-[10px] text-[#A3A3A8] tracking-widest font-mono">
+                      24 FPS • 35MM
+                    </span>
                   </div>
-                  <span className="text-[10px] text-[#A3A3A8] tracking-widest font-mono">
-                    24 FPS • 35MM
-                  </span>
                 </div>
               </div>
             </div>
-          </div>
+          </Card3D>
         </motion.div>
       </div>
 

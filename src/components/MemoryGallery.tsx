@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GalleryImage } from "@/types/eternity";
 import { X, ChevronLeft, ChevronRight, MapPin, Calendar, ZoomIn, Camera } from "lucide-react";
+import Card3D from "@/components/Card3D";
 
 interface MemoryGalleryProps {
   images: GalleryImage[];
@@ -98,64 +99,66 @@ export default function MemoryGallery({ images }: MemoryGalleryProps) {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: (index % 3) * 0.12 }}
                 onClick={() => setActiveImageIndex(index)}
-                className={`group relative rounded-2xl overflow-hidden cursor-pointer bg-[#151519] border border-[#D6B779]/20 hover:border-[#D6B779]/60 transition-all duration-700 shadow-2xl ${gridSpanClass}`}
+                className={`relative cursor-pointer ${gridSpanClass}`}
               >
-                {/* Photo Element */}
-                <img
-                  src={item.url}
-                  alt={item.caption || "Special moment"}
-                  className="w-full h-full object-cover filter contrast-[1.03] brightness-95 transition-all duration-1000 ease-out group-hover:scale-105 group-hover:brightness-105"
-                  loading="lazy"
-                />
+                <Card3D maxTilt={9} scale={1.02} glareOpacity={0.2} className="w-full h-full rounded-2xl overflow-hidden bg-[#151519] border border-[#D6B779]/20 hover:border-[#D6B779]/60 transition-all duration-700 shadow-2xl group">
+                  {/* Photo Element */}
+                  <img
+                    src={item.url}
+                    alt={item.caption || "Special moment"}
+                    className="w-full h-full object-cover filter contrast-[1.03] brightness-95 transition-all duration-1000 ease-out group-hover:scale-105 group-hover:brightness-105"
+                    loading="lazy"
+                  />
 
-                {/* Subtle dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D]/95 via-[#0B0B0D]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                  {/* Subtle dark gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D]/95 via-[#0B0B0D]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
 
-                {/* Top badges: Figure Numeral, Date & Featured */}
-                <div className="absolute top-4 inset-x-4 flex items-center justify-between pointer-events-none">
-                  <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B0B0D]/80 backdrop-blur-md text-[10px] uppercase tracking-widest text-[#D6B779] border border-[#D6B779]/20 font-mono">
-                    FIG. {figureNumeral}
-                  </span>
-
-                  <div className="flex items-center gap-2">
-                    {item.is_featured && (
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#D6B779]/20 text-[#E8CF9A] border border-[#D6B779]/40 text-[9px] uppercase tracking-widest font-mono">
-                        FEATURED
-                      </span>
-                    )}
-                    <span className="w-8 h-8 rounded-full bg-[#0B0B0D]/70 backdrop-blur-md flex items-center justify-center text-[#D6B779] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <ZoomIn className="w-3.5 h-3.5" />
+                  {/* Top badges: Figure Numeral, Date & Featured */}
+                  <div className="absolute top-4 inset-x-4 flex items-center justify-between pointer-events-none">
+                    <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B0B0D]/80 backdrop-blur-md text-[10px] uppercase tracking-widest text-[#D6B779] border border-[#D6B779]/20 font-mono">
+                      FIG. {figureNumeral}
                     </span>
-                  </div>
-                </div>
 
-                {/* Bottom Placard Caption & Details */}
-                <div className="absolute bottom-5 inset-x-5 text-left pointer-events-none">
-                  <div className="flex items-center gap-3 text-[10px] text-[#D6B779]/80 font-mono tracking-wider mb-1.5">
-                    {item.date && (
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3 text-[#D6B779]" />
-                        {item.date}
+                    <div className="flex items-center gap-2">
+                      {item.is_featured && (
+                        <span className="px-2.5 py-0.5 rounded-full bg-[#D6B779]/20 text-[#E8CF9A] border border-[#D6B779]/40 text-[9px] uppercase tracking-widest font-mono">
+                          FEATURED
+                        </span>
+                      )}
+                      <span className="w-8 h-8 rounded-full bg-[#0B0B0D]/70 backdrop-blur-md flex items-center justify-center text-[#D6B779] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <ZoomIn className="w-3.5 h-3.5" />
                       </span>
-                    )}
-                    {item.location && (
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-[#D6B779]" />
-                        {item.location}
-                      </span>
-                    )}
+                    </div>
                   </div>
 
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#F5F0E8] font-normal leading-snug line-clamp-2 mb-1">
-                    {item.caption || "An unforgettable memory"}
-                  </h3>
+                  {/* Bottom Placard Caption & Details */}
+                  <div className="absolute bottom-5 inset-x-5 text-left pointer-events-none">
+                    <div className="flex items-center gap-3 text-[10px] text-[#D6B779]/80 font-mono tracking-wider mb-1.5">
+                      {item.date && (
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3 text-[#D6B779]" />
+                          {item.date}
+                        </span>
+                      )}
+                      {item.location && (
+                        <span className="flex items-center gap-1">
+                          <MapPin className="w-3 h-3 text-[#D6B779]" />
+                          {item.location}
+                        </span>
+                      )}
+                    </div>
 
-                  {item.personal_note && (
-                    <p className="text-xs text-[#A3A3A8] font-serif font-light italic line-clamp-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      &ldquo;{item.personal_note}&rdquo;
-                    </p>
-                  )}
-                </div>
+                    <h3 className="font-serif text-xl sm:text-2xl text-[#F5F0E8] font-normal leading-snug line-clamp-2 mb-1">
+                      {item.caption || "An unforgettable memory"}
+                    </h3>
+
+                    {item.personal_note && (
+                      <p className="text-xs text-[#A3A3A8] font-serif font-light italic line-clamp-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        &ldquo;{item.personal_note}&rdquo;
+                      </p>
+                    )}
+                  </div>
+                </Card3D>
               </motion.div>
             );
           })}

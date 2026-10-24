@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LetterContent } from "@/types/eternity";
 import { Sparkles, RotateCcw, Heart, Mail } from "lucide-react";
+import Card3D from "@/components/Card3D";
 
 interface HeartfeltLetterProps {
   letter: LetterContent;
@@ -83,64 +84,70 @@ export default function HeartfeltLetter({ letter, recipientName }: HeartfeltLett
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, y: 30, scale: 0.92 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full max-w-lg aspect-[1.58/1] rounded-2xl bg-[#151519] border border-[#D6B779]/35 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] p-8 flex flex-col items-center justify-between overflow-hidden perspective-1000 group cursor-pointer"
-              onClick={handleOpenLetter}
-              style={{
-                backgroundImage:
-                  "radial-gradient(ellipse at 50% 30%, rgba(30, 30, 38, 0.9), rgba(11, 11, 13, 0.98))",
-              }}
+              className="w-full max-w-lg"
             >
-              {/* Envelope Flap 3D fold */}
-              <div
-                className={`absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-[#23232C] to-[#151519] border-b border-[#D6B779]/30 origin-top transition-transform duration-700 ease-in-out z-20 ${
-                  isAnimating ? "-rotate-x-180 opacity-60" : ""
-                }`}
-                style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
-              />
-
-              {/* Envelope Interior Lining Pattern */}
-              <div className="absolute inset-x-6 bottom-6 top-16 bg-[#1A1A22] rounded-lg border border-[#D6B779]/15 flex items-center justify-center opacity-40 pointer-events-none">
-                <span className="font-serif italic text-xs text-[#D6B779]/40 tracking-widest">
-                  CONFIDENTIAL • ETERNITY VAULT
-                </span>
-              </div>
-
-              {/* Top Text */}
-              <div className="relative z-10 pt-2 text-center">
-                <span className="text-[10px] tracking-[0.3em] uppercase text-[#D6B779]/80 font-mono">
-                  {letter.seal_text || "For Your Eyes Only"}
-                </span>
-              </div>
-
-              {/* Champagne Gold Embossed Wax Seal */}
-              <div className="relative z-30 my-auto flex flex-col items-center">
-                <motion.div
-                  whileHover={{ scale: 1.08 }}
-                  whileTap={{ scale: 0.94 }}
-                  className="relative flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-tr from-[#8A6F36] via-[#D6B779] to-[#F5F0E8] shadow-[0_0_25px_rgba(214,183,121,0.35)] border-2 border-[#F5F0E8]/60 transition-transform duration-300"
+              <Card3D maxTilt={12} scale={1.03} glareOpacity={0.22} className="w-full aspect-[1.58/1] rounded-2xl bg-[#151519] border border-[#D6B779]/35 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] p-8 flex flex-col items-center justify-between overflow-hidden cursor-pointer group">
+                <div
+                  className="w-full h-full flex flex-col items-center justify-between"
+                  onClick={handleOpenLetter}
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(ellipse at 50% 30%, rgba(30, 30, 38, 0.9), rgba(11, 11, 13, 0.98))",
+                  }}
                 >
-                  {/* Wax rim seal texture */}
-                  <div className="w-16 h-16 rounded-full border border-[#0B0B0D]/30 flex items-center justify-center bg-gradient-to-br from-[#D6B779] to-[#8A6F36]">
-                    <span className="font-serif font-bold text-3xl text-[#0B0B0D] tracking-wider drop-shadow-sm select-none">
-                      E
+                  {/* Envelope Flap 3D fold */}
+                  <div
+                    className={`absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-[#23232C] to-[#151519] border-b border-[#D6B779]/30 origin-top transition-transform duration-700 ease-in-out z-20 ${
+                      isAnimating ? "-rotate-x-180 opacity-60" : ""
+                    }`}
+                    style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
+                  />
+
+                  {/* Envelope Interior Lining Pattern */}
+                  <div className="absolute inset-x-6 bottom-6 top-16 bg-[#1A1A22] rounded-lg border border-[#D6B779]/15 flex items-center justify-center opacity-40 pointer-events-none">
+                    <span className="font-serif italic text-xs text-[#D6B779]/40 tracking-widest">
+                      CONFIDENTIAL • ETERNITY VAULT
                     </span>
                   </div>
-                  <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-[#F5F0E8] animate-pulse" />
-                </motion.div>
-              </div>
 
-              {/* Bottom Interactive Button */}
-              <div className="relative z-30 pb-2">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleOpenLetter();
-                  }}
-                  className="group/btn relative px-8 py-2.5 rounded-full bg-[#0B0B0D]/90 border border-[#D6B779]/50 text-xs text-[#E8CF9A] uppercase tracking-[0.25em] font-light hover:bg-[#D6B779] hover:text-[#0B0B0D] hover:border-[#D6B779] transition-all duration-300 shadow-lg"
-                >
-                  <span>Open Your Letter</span>
-                </button>
-              </div>
+                  {/* Top Text */}
+                  <div className="relative z-10 pt-2 text-center">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-[#D6B779]/80 font-mono">
+                      {letter.seal_text || "For Your Eyes Only"}
+                    </span>
+                  </div>
+
+                  {/* Champagne Gold Embossed Wax Seal */}
+                  <div className="relative z-30 my-auto flex flex-col items-center">
+                    <motion.div
+                      whileHover={{ scale: 1.08 }}
+                      whileTap={{ scale: 0.94 }}
+                      className="relative flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-tr from-[#8A6F36] via-[#D6B779] to-[#F5F0E8] shadow-[0_0_25px_rgba(214,183,121,0.35)] border-2 border-[#F5F0E8]/60 transition-transform duration-300"
+                    >
+                      {/* Wax rim seal texture */}
+                      <div className="w-16 h-16 rounded-full border border-[#0B0B0D]/30 flex items-center justify-center bg-gradient-to-br from-[#D6B779] to-[#8A6F36]">
+                        <span className="font-serif font-bold text-3xl text-[#0B0B0D] tracking-wider drop-shadow-sm select-none">
+                          E
+                        </span>
+                      </div>
+                      <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-[#F5F0E8] animate-pulse" />
+                    </motion.div>
+                  </div>
+
+                  {/* Bottom Interactive Button */}
+                  <div className="relative z-30 pb-2">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleOpenLetter();
+                      }}
+                      className="group/btn relative px-8 py-2.5 rounded-full bg-[#0B0B0D]/90 border border-[#D6B779]/50 text-xs text-[#E8CF9A] uppercase tracking-[0.25em] font-light hover:bg-[#D6B779] hover:text-[#0B0B0D] hover:border-[#D6B779] transition-all duration-300 shadow-lg"
+                    >
+                      <span>Open Your Letter</span>
+                    </button>
+                  </div>
+                </div>
+              </Card3D>
             </motion.div>
           ) : (
             /* The Unfolded Parchment Letter */

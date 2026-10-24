@@ -1110,9 +1110,7 @@ export default function AdminDashboard() {
                         title: "New Chapter",
                         date: "Special Memory",
                         story: "Write the story behind this unforgettable milestone...",
-                        image_urls: [
-                          "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
-                        ],
+                        image_urls: ["/images/lechu-hero.jpg"],
                         location: "Special Location",
                         personal_note: "A memory that will forever bring a smile.",
                         sort_order: data.timeline.length + 1,

@@ -120,10 +120,7 @@ export default function VideoMemories({ videos }: VideoMemoriesProps) {
             {/* Poster / Thumbnail Image */}
             <div className="relative aspect-video w-full overflow-hidden bg-[#0B0B0D]">
               <img
-                src={
-                  vid.poster_url ||
-                  "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=800&q=80"
-                }
+                src={vid.poster_url || "/images/lechu-hero.jpg"}
                 alt={vid.title}
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
